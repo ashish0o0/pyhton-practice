@@ -1,3 +1,5 @@
+# write a program to count no of letter and digit present in the string
+
 text = input("Enter a string: ")
 
 letter_count = 0
