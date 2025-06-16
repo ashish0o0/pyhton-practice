@@ -1,11 +1,11 @@
 def duplicateRemoved(arr):
-    n = len(arr)
+    
     new_arr = []
 
     for num in arr:
         if num not in new_arr:
             new_arr.append(num)
-    return new_arr
+    return new_arr,len(new_arr)
 
 arr = []
 
