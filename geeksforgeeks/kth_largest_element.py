@@ -1,16 +1,17 @@
 def kthElement(arr, k):
     n = len(arr)
 
-    for i in range(n):
-        for j in range(0, n - i - 1):
-            if arr[j] < arr[j + 1]:
-                # Swap the elements
-                temp = arr[j]
-                arr[j] = arr[j + 1]
-                arr[j + 1] = temp
-    ans = arr[k - 1]
-    return ans
+    temp = 0
+    new_arr = []
 
+
+    for i in range(n):
+        if len(new_arr) < k:
+            if arr[i] > temp:
+                new_arr.append(arr[i])
+                temp = arr[i]
+        else:
+            return arr[i]
     
 arr = []
 
