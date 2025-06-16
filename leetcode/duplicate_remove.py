@@ -1,12 +1,16 @@
 def duplicateRemoved(arr):
-    
+
     new_arr = []
 
     for num in arr:
         if num not in new_arr:
             new_arr.append(num)
-    return new_arr,len(new_arr)
+    k = len(new_arr)
+    
+    for i in range(k):
+        arr[i] = new_arr[i]
 
+    return k
 arr = []
 
 n = int(input("Enter the length of the Array: "))

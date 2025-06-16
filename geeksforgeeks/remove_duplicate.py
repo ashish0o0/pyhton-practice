@@ -9,7 +9,6 @@ def duplicateRemoved(arr):
     
     for i in range(k):
         arr[i] = new_arr[i]
-    print(arr)
 
     return k
 
