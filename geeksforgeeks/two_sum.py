@@ -1,14 +1,20 @@
-def twoSum(arr, k):
-    seen = []
-    for num in arr:
-        diff = k - num
-        if diff in seen:
+def twoSum(arr, target):
+    arr = sorted(arr)
+    left = 0
+    right = len(arr) - 1
+
+    while left < right:
+        total = arr[left] + arr[right]
+        if total == target:
             return True
-        seen.append(num)
+        elif total < target:
+            left += 1
+        else:
+            right -= 1
     return False
 
 arr = [1, 3, 24, 10, 5]
-k = 3
-call = twoSum(arr, k)
+target = 3
+call = twoSum(arr, target)
 
 print(call)
