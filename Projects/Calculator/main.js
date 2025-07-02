@@ -1,3 +1,6 @@
+localStorage.removeItem('calcHistory');
+
+
 function toggleDarkMode() {
   document.body.classList.toggle('dark');
   localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
@@ -12,7 +15,10 @@ function loadTheme() {
 
 window.onload = () => {
   loadTheme();
+  localStorage.removeItem('calcHistory');
+  renderHistory();
 };
+
 
 function append(value) {
   display.value += value;
@@ -25,7 +31,7 @@ function calculate() {
     const record = `${expression} = ${result}`;
     addToHistory(record);
     display.value = result;
-    historyIndex = -1; // reset arrow navigation
+    historyIndex = -1;
   } catch {
     display.value = 'Error';
   }
@@ -37,7 +43,7 @@ function clearDisplay() {
 
 function addToHistory(entry) {
   let history = JSON.parse(localStorage.getItem('calcHistory')) || [];
-  history.unshift(entry); // newest first
+  history.unshift(entry);
   localStorage.setItem('calcHistory', JSON.stringify(history));
   renderHistory();
 }
@@ -63,7 +69,7 @@ document.addEventListener('keydown', (e) => {
   if (/\d/.test(key) || ['+', '-', '*', '/', '%', '.', '(', ')'].includes(key)) {
     append(key);
   } else if (key === 'Enter') {
-    e.preventDefault();  // prevents form submission or refresh
+    e.preventDefault();
     calculate();
   } else if (key === 'Backspace') {
     display.value = display.value.slice(0, -1);
